@@ -33,12 +33,15 @@ import java.util.Objects;
 public class FragmentoPerfil extends Fragment {
     private AppDatabase mAppDatabase;
     private SharedPreferences mPreferences;
+    private SharedPreferences mSharedPrefData;
     private String mShareFile = "user_data";
+    private String mPrefFile = "pref_data";
 
     public ImageView icUserSettings;
-    public ImageView icPassSettings;
-    public TextView tvUserName;
-    public TextView tvUserMail;
+    public ImageView icNaveSettings;
+    public TextView tvUserName, tvUserMail, tvNaveName, tvNaveAddress, tvResponsableName;
+
+
 
     public FragmentoPerfil() {
     }
@@ -49,6 +52,8 @@ public class FragmentoPerfil extends Fragment {
         mAppDatabase = AppDatabase.getInstance(requireContext());
         mPreferences = requireContext()
                 .getSharedPreferences(mShareFile, Context.MODE_PRIVATE);
+        mSharedPrefData = requireContext()
+                .getSharedPreferences(mPrefFile, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -62,13 +67,29 @@ public class FragmentoPerfil extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        icUserSettings = (ImageView) requireView().findViewById(R.id.ic_user_settings);
-        icPassSettings = (ImageView) requireView().findViewById(R.id.ic_password_settings);
-        tvUserName = (TextView) requireView().findViewById(R.id.texto_nombre);
-        tvUserMail = (TextView) requireView().findViewById(R.id.texto_email);
+        icUserSettings = requireView().findViewById(R.id.ic_user_settings);
+        icNaveSettings = requireView().findViewById(R.id.account_set_nave);
 
+        // User TextView
+        tvUserName = requireView().findViewById(R.id.texto_nombre);
+        tvUserMail = requireView().findViewById(R.id.texto_email);
+
+        // Nave TextView
+        tvNaveName = requireView().findViewById(R.id.account_nave_nombre);
+        tvNaveAddress = requireView().findViewById(R.id.account_nave_address);
+
+        // Responsable TextView
+        tvResponsableName = requireView().findViewById(R.id.texto_responsable);
+
+        // Set text
         tvUserMail.setText(mPreferences.getString("user_mail", "Sin correo registrado"));
         tvUserName.setText(mPreferences.getString("user_name", "Usuario no definido"));
+
+        tvNaveName.setText(mPreferences.getString("nave_name", "Sin declarar"));
+        tvNaveAddress.setText(mPreferences.getString("nave_address", "Sin nave, no hay dirección"));
+
+        tvResponsableName.setText(mPreferences.getString("responsable_name", "Sin declarar"));
+
 
         icUserSettings.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -78,7 +99,84 @@ public class FragmentoPerfil extends Fragment {
             }
         });
 
+        icNaveSettings.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                showNavesSettings();
+            }
+        });
 
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void showNavesSettings(){
+        final Dialog dialogNave = new Dialog(getContext());
+        List<String> navesEntries = mAppDatabase.getNaves().getAllNavesEntries();
+
+        dialogNave.setTitle("Naves disponibles");
+        dialogNave.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+        dialogNave.setContentView(R.layout.radiobutton_dialog);
+
+        RadioGroup radioGroup = dialogNave.findViewById(R.id.radio_group);
+        for (int i = 0; i < navesEntries.size(); i++){
+            RadioButton radioButton = new RadioButton(requireContext());
+            long mNaveID = mAppDatabase.getNaves().getIdByNaveName(navesEntries.get(i));
+
+            radioButton.setTextSize(18);
+            radioButton.setPadding(15,15,15,15);
+            radioButton.setId(Math.toIntExact(mNaveID));
+            radioButton.setText(navesEntries.get(i));
+
+            radioGroup.addView(radioButton);
+        }
+        dialogNave.show();
+        dialogNave.setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.ic_business);
+        radioGroup.check((int) mPreferences.getLong("nave_id", 1));
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int childCountNave = group.getChildCount();
+                for (int x = 0; x < childCountNave; x++){
+                    RadioButton btn = (RadioButton) group.getChildAt(x);
+                    if (btn.getId() == checkedId){
+                        long mNaveID = mAppDatabase.getNaves().getIdByNaveName(btn.getText().toString());
+                        String mAddress = mAppDatabase.getNaves().getAddressFromId(mNaveID);
+                        String mResponsable = "Responsable: " + mAppDatabase
+                                .getResponsable().getResponsableNameByNaveID(mNaveID);
+                        String mResponsableEmail = mAppDatabase
+                                .getResponsable().getResponsableEmailByNaveID(mNaveID);
+
+                        // Save data into preference file "user_data"
+                        SharedPreferences.Editor mPreferencesEdit = mPreferences.edit();
+
+                        // Save Nave data
+                        mPreferencesEdit.putLong("nave_id", mNaveID);
+                        mPreferencesEdit.putString("nave_name", btn.getText().toString());
+                        mPreferencesEdit.putString("nave_address", mAddress);
+
+                        // Save Responsable Data into file "pref_data"
+                        mPreferencesEdit.putString("responsable_name", mResponsable);
+                        mPreferencesEdit.putString("responsable_email", mResponsableEmail);
+
+                        // Save data
+                        mPreferencesEdit.apply();
+
+
+
+                        // We change Nave name an address in UI
+                        tvNaveName.setText(btn.getText().toString());
+                        tvNaveAddress.setText(mAddress);
+                        tvResponsableName.setText(mResponsable);
+
+                        //Close dialog box
+                        dialogNave.dismiss();
+                    }
+                }
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -101,8 +199,6 @@ public class FragmentoPerfil extends Fragment {
             radioButton.setText(userEntries.get(i));
 
             radioGroup.addView(radioButton);
-
-
         }
         dialog.show();
         dialog.setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,R.drawable.usuario);
@@ -127,6 +223,8 @@ public class FragmentoPerfil extends Fragment {
                         // We change name an mail in UI
                         tvUserMail.setText(userMail);
                         tvUserName.setText(btn.getText().toString());
+
+                        dialog.dismiss();
 
                         /* For development use only
                         Toast.makeText(

@@ -2,6 +2,7 @@ package com.cupagroup.controlcalidad.db.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.cupagroup.controlcalidad.utils.Constants;
@@ -21,6 +22,7 @@ public class Canteras implements Serializable {
         this.name = name;
     }
 
+    @Ignore
     public Canteras(){
         // Nothing to do
     }

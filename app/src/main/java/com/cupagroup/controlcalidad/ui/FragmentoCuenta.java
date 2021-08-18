@@ -17,6 +17,7 @@ import com.cupagroup.controlcalidad.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -51,15 +52,18 @@ public class FragmentoCuenta extends Fragment {
     private void insertarTabs(ViewGroup container) {
         View padre = (View) container.getParent();
         appBar = (AppBarLayout) padre.findViewById(R.id.appbar);
-        pestanas = new TabLayout(getActivity());
-        pestanas.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        pestanas = new TabLayout(requireActivity());
+        pestanas.setTabTextColors(
+                Color.parseColor("#410c27"),
+                Color.parseColor("#550e39")
+        );
         appBar.addView(pestanas);
     }
 
     private void poblarViewPager(ViewPager viewPager) {
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
         adapter.addFragment(new FragmentoPerfil(), getString(R.string.titulo_tab_perfil));
-        adapter.addFragment(new FragmentoDirecciones(), getString(R.string.titulo_tab_direcciones));
+        //adapter.addFragment(new FragmentoDirecciones(), getString(R.string.titulo_tab_direcciones));
         adapter.addFragment(new FragmentoTarjetas(), getString(R.string.titulo_tab_tarjetas));
         viewPager.setAdapter(adapter);
     }

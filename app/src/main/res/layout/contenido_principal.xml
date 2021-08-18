@@ -6,14 +6,16 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarCupaTheme">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppBarCupaTheme" />
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
@@ -24,5 +26,24 @@
 
     </RelativeLayout>
 
+    <com.cupagroup.controlcalidad.utils.MovableActionButton
+        android:id="@+id/floating_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/floating"
+        android:layout_marginEnd="@dimen/floating"
+        android:text="@string/count_text"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+
+        app:icon="@drawable/ic_drag_indicator"
+        app:iconTint="@color/white"
+        app:iconGravity="start"
+        app:layout_anchorGravity="bottom|right|end"
+        android:visibility="invisible" />
 
 </RelativeLayout>

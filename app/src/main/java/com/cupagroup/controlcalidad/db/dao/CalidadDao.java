@@ -16,6 +16,9 @@ public interface CalidadDao {
     @Query("SELECT calidad_name FROM calidad ORDER BY LOWER(calidad_id)")
     List<String> getAll();
 
+    @Query("SELECT COUNT(*) FROM calidad")
+    Integer getAllCount();
+
     @Insert
     long insert(Calidad calidad);
 

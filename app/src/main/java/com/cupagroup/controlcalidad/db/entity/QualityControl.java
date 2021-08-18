@@ -23,11 +23,11 @@ public class QualityControl implements Serializable {
     @ColumnInfo(name = "session_id")
     private long session_id;
 
-    @ColumnInfo(name = "size_width")
-    private String size_width;
+    @ColumnInfo(name = "refcomercial")
+    private String ref_comercial;
 
-    @ColumnInfo(name = "size_height")
-    private String size_height;
+    @ColumnInfo(name = "formatos")
+    private String formatos;
 
     @ColumnInfo(name = "forma")
     private String forma;
@@ -43,9 +43,6 @@ public class QualityControl implements Serializable {
 
     @ColumnInfo(name = "roturas")
     private int roturas;
-
-    @ColumnInfo(name = "corte")
-    private int corte;
 
     @ColumnInfo(name = "fina")
     private int fina;
@@ -68,17 +65,11 @@ public class QualityControl implements Serializable {
     @ColumnInfo(name = "piritas")
     private int piritas;
 
-    @ColumnInfo(name = "color")
-    private int color;
-
-    @ColumnInfo(name = "vetas")
-    private int vetas;
-
     @ColumnInfo(name = "flor")
     private int flor;
 
-    @ColumnInfo(name = "sonido")
-    private int sonido;
+    @ColumnInfo(name = "rucios")
+    private int rucios;
 
     @ColumnInfo(name = "cortescuarzo")
     private int cortescuarzo;
@@ -92,23 +83,22 @@ public class QualityControl implements Serializable {
     @ColumnInfo(name = "create_at")
     private String create_at;
 
-    public QualityControl(Long session_id, Long ensayo_id, String size_width, String size_height,
-                          String forma, Double espesor, String calidad, int chaflan,
-                          int roturas, int corte, int fina, int gruesa,
-                          int refolio, int escuadra, int torcida, int nudos,
-                          int piritas, int color, int vetas, int flor,
-                          int sonido, int cortescuarzo, int totalfallos, String comment,
-                          String create_at) {
-        this.session_id = session_id;
+    public QualityControl(long quality_id, long ensayo_id, long session_id, String ref_comercial,
+                          String formatos, String forma, Double espesor, String calidad,
+                          int chaflan, int roturas, int fina, int gruesa, int refolio, int escuadra,
+                          int torcida, int nudos, int piritas, int flor, int rucios,
+                          int cortescuarzo, int totalfallos, String comment, String create_at)
+    {
+        this.quality_id = quality_id;
         this.ensayo_id = ensayo_id;
-        this.size_width = size_width;
-        this.size_height = size_height;
+        this.session_id = session_id;
+        this.ref_comercial = ref_comercial;
+        this.formatos = formatos;
         this.forma = forma;
         this.espesor = espesor;
         this.calidad = calidad;
         this.chaflan = chaflan;
         this.roturas = roturas;
-        this.corte = corte;
         this.fina = fina;
         this.gruesa = gruesa;
         this.refolio = refolio;
@@ -116,10 +106,8 @@ public class QualityControl implements Serializable {
         this.torcida = torcida;
         this.nudos = nudos;
         this.piritas = piritas;
-        this.color = color;
-        this.vetas = vetas;
         this.flor = flor;
-        this.sonido = sonido;
+        this.rucios = rucios;
         this.cortescuarzo = cortescuarzo;
         this.totalfallos = totalfallos;
         this.comment = comment;
@@ -134,33 +122,47 @@ public class QualityControl implements Serializable {
     public long getQuality_id() {
         return quality_id;
     }
+
     public void setQuality_id(long quality_id) {
         this.quality_id = quality_id;
     }
 
-    public long getSession_id() { return session_id; }
-    public void setSession_id(long session_id) { this.session_id = session_id; }
-
-    public long getEnsayo_id() { return ensayo_id; }
-    public void setEnsayo_id(long ensayo_id) { this.ensayo_id = ensayo_id; }
-
-    public String getSize_width() {
-        return size_width;
-    }
-    public void setSize_width(String size_width) {
-        this.size_width = size_width;
+    public long getEnsayo_id() {
+        return ensayo_id;
     }
 
-    public String getSize_height() {
-        return size_height;
+    public void setEnsayo_id(long ensayo_id) {
+        this.ensayo_id = ensayo_id;
     }
-    public void setSize_height(String size_height) {
-        this.size_height = size_height;
+
+    public long getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(long session_id) {
+        this.session_id = session_id;
+    }
+
+    public String getRef_comercial() {
+        return ref_comercial;
+    }
+
+    public void setRef_comercial(String ref_comercial) {
+        this.ref_comercial = ref_comercial;
+    }
+
+    public String getFormatos() {
+        return formatos;
+    }
+
+    public void setFormatos(String formatos) {
+        this.formatos = formatos;
     }
 
     public String getForma() {
         return forma;
     }
+
     public void setForma(String forma) {
         this.forma = forma;
     }
@@ -168,6 +170,7 @@ public class QualityControl implements Serializable {
     public Double getEspesor() {
         return espesor;
     }
+
     public void setEspesor(Double espesor) {
         this.espesor = espesor;
     }
@@ -175,6 +178,7 @@ public class QualityControl implements Serializable {
     public String getCalidad() {
         return calidad;
     }
+
     public void setCalidad(String calidad) {
         this.calidad = calidad;
     }
@@ -182,6 +186,7 @@ public class QualityControl implements Serializable {
     public int getChaflan() {
         return chaflan;
     }
+
     public void setChaflan(int chaflan) {
         this.chaflan = chaflan;
     }
@@ -189,20 +194,15 @@ public class QualityControl implements Serializable {
     public int getRoturas() {
         return roturas;
     }
+
     public void setRoturas(int roturas) {
         this.roturas = roturas;
-    }
-
-    public int getCorte() {
-        return corte;
-    }
-    public void setCorte(int corte) {
-        this.corte = corte;
     }
 
     public int getFina() {
         return fina;
     }
+
     public void setFina(int fina) {
         this.fina = fina;
     }
@@ -210,6 +210,7 @@ public class QualityControl implements Serializable {
     public int getGruesa() {
         return gruesa;
     }
+
     public void setGruesa(int gruesa) {
         this.gruesa = gruesa;
     }
@@ -217,6 +218,7 @@ public class QualityControl implements Serializable {
     public int getRefolio() {
         return refolio;
     }
+
     public void setRefolio(int refolio) {
         this.refolio = refolio;
     }
@@ -224,6 +226,7 @@ public class QualityControl implements Serializable {
     public int getEscuadra() {
         return escuadra;
     }
+
     public void setEscuadra(int escuadra) {
         this.escuadra = escuadra;
     }
@@ -231,6 +234,7 @@ public class QualityControl implements Serializable {
     public int getTorcida() {
         return torcida;
     }
+
     public void setTorcida(int torcida) {
         this.torcida = torcida;
     }
@@ -238,6 +242,7 @@ public class QualityControl implements Serializable {
     public int getNudos() {
         return nudos;
     }
+
     public void setNudos(int nudos) {
         this.nudos = nudos;
     }
@@ -245,41 +250,31 @@ public class QualityControl implements Serializable {
     public int getPiritas() {
         return piritas;
     }
+
     public void setPiritas(int piritas) {
         this.piritas = piritas;
-    }
-
-    public int getColor() {
-        return color;
-    }
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public int getVetas() {
-        return vetas;
-    }
-    public void setVetas(int vetas) {
-        this.vetas = vetas;
     }
 
     public int getFlor() {
         return flor;
     }
+
     public void setFlor(int flor) {
         this.flor = flor;
     }
 
-    public int getSonido() {
-        return sonido;
+    public int getRucios() {
+        return rucios;
     }
-    public void setSonido(int sonido) {
-        this.sonido = sonido;
+
+    public void setRucios(int rucios) {
+        this.rucios = rucios;
     }
 
     public int getCortescuarzo() {
         return cortescuarzo;
     }
+
     public void setCortescuarzo(int cortescuarzo) {
         this.cortescuarzo = cortescuarzo;
     }
@@ -287,16 +282,23 @@ public class QualityControl implements Serializable {
     public int getTotalfallos() {
         return totalfallos;
     }
+
     public void setTotalfallos(int totalfallos) {
         this.totalfallos = totalfallos;
     }
 
-    public String getComment() { return comment; }
-    public void setComment(String comment) { this.comment = comment; }
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public String getCreate_at() {
         return create_at;
     }
+
     public void setCreate_at(String create_at) {
         this.create_at = create_at;
     }

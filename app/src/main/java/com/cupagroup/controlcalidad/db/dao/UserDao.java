@@ -17,12 +17,14 @@ public interface UserDao {
     @Query("SELECT username FROM user ORDER BY LOWER(user_id)")
     List<String> getAllEntries();
 
+    @Ignore
     @Query("SELECT user_id FROM user ORDER BY LOWER(user_id)")
     List<Long> getAllEntryValues();
 
     @Query("SELECT user_id FROM user WHERE username LIKE :nombre LIMIT 1")
     Long getIdByName(String nombre);
 
+    @Ignore
     @Query("SELECT email, password FROM user WHERE email LIKE :email")
     Credentials getCredentials(String email);
 

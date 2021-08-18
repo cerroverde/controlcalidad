@@ -1,7 +1,5 @@
 package com.cupagroup.controlcalidad.modelo;
 
-import com.cupagroup.controlcalidad.db.AppDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +7,8 @@ import java.util.List;
  * Modelo de datos estático para alimentar la aplicación
  */
 public class Campos {
-    private String titulo;
-    private String etiqueta;
-    private AppDatabase mAppDatabase;
+    private final String titulo;
+    private final String etiqueta;
 
 
     public Campos(String titulo, String etiqueta) {
@@ -19,35 +16,27 @@ public class Campos {
         this.etiqueta = etiqueta;
     }
 
-    public static final List<Campos> FORMAS = new ArrayList<>();
-    public static final List<Campos> MATERIALES = new ArrayList<>();
-    public static final List<Campos> FORMA = new ArrayList<>();
-    public static final List<Campos> PIEDRA = new ArrayList<>();
+    public static final List<Campos> MATERIALS = new ArrayList<>();
 
     static {
-        MATERIALES.add(new Campos("LARGO DE LA PIEZA", "Este valor esta representado en centimetros"));
-        MATERIALES.add(new Campos("ANCHO DE LA PIEZA", "Este valor esta representado en centimetros"));
-        MATERIALES.add(new Campos("FORMA", "Seleccione la forma de la pieza"));
-        MATERIALES.add(new Campos("ESPESOR", "Especifique el espesor correspondiente"));
-        MATERIALES.add(new Campos("CALIDAD", "Seleccione el tipo de calidad"));
-
-        FORMA.add(new Campos("CHAFLAN", "Corte y rebaje en la arista de las piezas"));
-        FORMA.add(new Campos("ROTURAS", "Cantidad de roturas identificadas"));
-        FORMA.add(new Campos("MAL CORTADA", "Cantidad de cortes erróneos"));
-        FORMA.add(new Campos("FINA", "Preguntar posible descripción"));
-        FORMA.add(new Campos("GRUESA", "Preguntar posible descripción"));
-        FORMA.add(new Campos("REFOLLO", "Preguntar posible descripción"));
-        FORMA.add(new Campos("FALSA ESCUADRA", "Preguntar posible descripción"));
-
-        PIEDRA.add(new Campos("TORCIDA","Numero de torceduras"));
-        PIEDRA.add(new Campos("NUDOS","Cantidad de nudos visibles"));
-        PIEDRA.add(new Campos("PIRITAS OXIDABLES","Preguntar posible descripción"));
-        PIEDRA.add(new Campos("DIFERENCIAS DE COLOR","Preguntar posible descripción"));
-        PIEDRA.add(new Campos("VETAS","Preguntar posible descripción"));
-        PIEDRA.add(new Campos("FLOR","Preguntar posible descripción"));
-        PIEDRA.add(new Campos("MAL SONIDO","Preguntar posible descripción"));
-        PIEDRA.add(new Campos("CORTES Y CUARZOS","Preguntar posible descripción"));
-
+        MATERIALS.add(new Campos("REF. COMERCIAL", "Referencias comerciales"));
+        MATERIALS.add(new Campos("FORMATOS", "Medidas de la pieza"));
+        MATERIALS.add(new Campos("FORMA", "Seleccione la forma de la pieza"));
+        MATERIALS.add(new Campos("CALIDAD", "Seleccione el tipo de calidad"));
+        MATERIALS.add(new Campos("ESPESOR", "Especifique el espesor correspondiente"));
+        MATERIALS.add(new Campos("CHAFLAN", "Corte y rebaje en la arista de las piezas"));
+        MATERIALS.add(new Campos("ROTURAS", "Cantidad de roturas identificadas"));
+        MATERIALS.add(new Campos("FINA", "Preguntar posible descripción"));
+        MATERIALS.add(new Campos("GRUESA", "Preguntar posible descripción"));
+        MATERIALS.add(new Campos("REFOLLO", "Preguntar posible descripción"));
+        MATERIALS.add(new Campos("FALSA ESCUADRA", "Preguntar posible descripción"));
+        MATERIALS.add(new Campos("TORCIDA","Numero de torceduras"));
+        MATERIALS.add(new Campos("NUDOS","Cantidad de nudos visibles"));
+        MATERIALS.add(new Campos("PIRITAS OXIDABLES","Preguntar posible descripción"));
+        MATERIALS.add(new Campos("BREGADAS","Preguntar posible descripción"));
+        MATERIALS.add(new Campos("FLOR","Preguntar posible descripción"));
+        MATERIALS.add(new Campos("CORTES Y CUARZOS","Preguntar posible descripción"));
+        MATERIALS.add(new Campos("RUCIOS", "Cantidad de cortes erróneos"));
     }
 
     public String getValor() {

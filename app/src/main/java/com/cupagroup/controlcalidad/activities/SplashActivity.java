@@ -10,28 +10,41 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.cupagroup.controlcalidad.R;
+import com.cupagroup.controlcalidad.ui.FragmentoCuenta;
 
 import static com.cupagroup.controlcalidad.sync.SyncManager.syncAll;
 
 public class SplashActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
+    private SharedPreferences mSharedPrefData;
     private String mShareFile = "pref_data";
+    private String mPrefFile = "user_data";
     private Long mSessionID;
+    private String mNave;
     private ProgressBar mProgressBar;
     private Handler mHandler;
 
     private int mProgressBarStatus = 0;
+    private final int rID_Conf = R.id.item_configuracion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mHandler = new Handler();
+
         mPreferences = this.getApplication()
                 .getSharedPreferences(mShareFile, Context.MODE_PRIVATE);
-        mSessionID =  mPreferences.getLong("sessionId", 99);
+        mSharedPrefData = this.getApplication()
+                .getSharedPreferences(mPrefFile, Context.MODE_PRIVATE);
+
+        // CONDICIAONALES PARA IR A PERFIL
+        mSessionID =  mPreferences.getLong("sessionId", 999999999);
+        mNave = mSharedPrefData.getString("nave_name", "Sin declarar");
 
         mProgressBar = (ProgressBar) findViewById(R.id.mProgressBar);
         syncAll(SplashActivity.this, mSessionID);
@@ -52,7 +65,7 @@ public class SplashActivity extends AppCompatActivity {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (mSessionID == 99){
+                        if (mSessionID == 999999999){
                             if (syncAll(SplashActivity.this, mSessionID)){
                                 Log.i("Sync","Synchronization successfully");
                             }else {
@@ -61,35 +74,19 @@ public class SplashActivity extends AppCompatActivity {
                         }else{
                             Log.i("SessionINFO", "Session is active with number: "+mSessionID);
                         }
-
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                        finish();
+                        if(mNave.equals("Sin declarar")){
+                            startActivity(new Intent(
+                                    SplashActivity.this,
+                                    MainActivity.class).putExtra("fragment_id",rID_Conf)
+                            );
+                            finish();
+                        }else{
+                            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                            finish();
+                        }
                     }
                 });
             }
         }).start();
-
-
-        /*
-        * Antigua forma de hacer un delay
-        *
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (mSessionID == 99){
-                    if (syncAll(SplashActivity.this, mSessionID)){
-                        Log.i("Sync","Synchronization successfully");
-                    }else {
-                        Log.e("Sync","Synchronization unsuccessfully");
-                    }
-                }else{
-                    Log.i("SessionINFO", "Session is active with number: "+mSessionID);
-                }
-
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
-            }
-        }, 3000);
-        */
     }
 }

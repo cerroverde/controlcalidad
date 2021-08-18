@@ -2,15 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ActividadPrincipal">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/busqueda"
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_post_add"
         android:orderInCategory="1"
+        android:title="Añadir ensayo"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save"
+        android:orderInCategory="2"
         android:title="@string/action_search"
         app:showAsAction="ifRoom" />
 </menu>

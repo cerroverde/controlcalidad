@@ -4,22 +4,21 @@
         <item name="font">@font/open_sans</item>
     </style>
 
-
-    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/primaryDarkColor</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
-    <style name="theme_cabecera_drawer" parent="@style/ThemeOverlay.AppCompat.Dark">
+    <style name="theme_cabecera_drawer" parent="Theme.RicoPaRico">
         <item name="android:background">@color/background_cabecera_drawer</item>
     </style>
 
-    <style name="Theme.ConNavigationDrawer" parent="Base.AppTheme"/>
+    <style name="Theme.ConNavigationDrawer" parent="Theme.RicoPaRico"/>
 
     <!-- Splash Theme -->
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent="Base.AppTheme">
         <item name="android:windowBackground">@drawable/cupa_pizarras_splash</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -33,12 +32,12 @@
         <item name="android:textColor">@color/textTitulosColor</item>
     </style>
 
-    <style name="AppBarCupaTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppBarCupaTheme" parent="Theme.AppCompat.Light">
         <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="CuadrosEnsayo" parent="android:TextAppearance">
+    <style name="CuadrosEnsayo" parent="Theme.RicoPaRico">
         <item name="android:textColor">@color/textTitulosColor</item>
         <item name="android:textColorHint">?android:textColorHint</item>
         <item name="android:textColorHighlight">?android:textColorHighlight</item>
@@ -48,19 +47,19 @@
 
     <style name="titulo_caja_ensayos">
         <item name="fontFamily">@font/open_sans_bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="numero_caja_ensayos">
+    <style name="numero_caja_ensayos" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/source_sans_pro_black</item>
         <item name="android:textSize">35sp</item>
         <item name="android:textColorHint">@color/textTitulosColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textAlignment">inherit</item>
     </style>
 
-    <style name="spinner_caja_ensayos">
+    <style name="spinner_caja_ensayos" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/source_sans_pro_black</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">35sp</item>
         <item name="android:textColorHint">@color/textTitulosColor</item>
         <item name="android:textColor">@color/textTitulosColor</item>
         <item name="android:textAlignment">center</item>
@@ -69,10 +68,10 @@
 
     <style name="hint_caja_ensayos">
         <item name="fontFamily">@font/source_sans_pro_light</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="MyAlertDialogStyle" parent="Theme.RicoPaRico">
         <!-- Used for the buttons -->
         <item name="colorAccent">#FFC107</item>
         <!-- Used for the title and text -->
@@ -100,5 +99,12 @@
         <item name="android:textColor">@color/primaryDarkColor</item>
     </style>
 
+    <style name="responsable" parent="Theme.RicoPaRico">
+        <item name="fontFamily">@font/source_sans_pro</item>
+        <item name="android:textSize">12sp</item>
+        <item name="iconSize">9dp</item>
+    </style>
+
+    <style name="FloatingCount">None</style>
 
 </resources>

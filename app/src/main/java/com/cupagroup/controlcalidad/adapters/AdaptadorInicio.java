@@ -16,16 +16,19 @@ import android.widget.Toast;
 import com.cupagroup.controlcalidad.R;
 import com.cupagroup.controlcalidad.modelo.Comida;
 import com.cupagroup.controlcalidad.ui.FragmentoCategorias;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import static com.cupagroup.controlcalidad.sync.SyncManager.getHeightUnit;
 import static com.cupagroup.controlcalidad.sync.SyncManager.savedParamShared;
 
 
 /**
- * Adaptador para mostrar las comidas más pedidas en la sección "Inicio"
+ * Adaptador para mostrar el menu principal "Nuevo ensayo" - "Historial" - "Estadisticas"
  */
 public class AdaptadorInicio
         extends RecyclerView.Adapter<AdaptadorInicio.ViewHolder> {
+
+    private ExtendedFloatingActionButton floatingCount;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
@@ -42,8 +45,9 @@ public class AdaptadorInicio
 
     }
 
-
-    public AdaptadorInicio() { /* ** Empty** */ }
+    public AdaptadorInicio(ExtendedFloatingActionButton floatingCount) {
+            this.floatingCount = floatingCount;
+    }
 
     @Override
     public int getItemCount() {
@@ -88,9 +92,10 @@ public class AdaptadorInicio
                                 .getSupportFragmentManager();
 
                 if (viewHolder.titulo.getText() == "NUEVO ENSAYO"){
+                    floatingCount.setVisibility(View.VISIBLE);
                     fragmentoGenerico = new FragmentoCategorias();
 
-                }else{
+                }else {
                     Toast.makeText(
                             viewHolder.itemView.getContext(),
                             "Función deshabilitada temporalmente!!!",

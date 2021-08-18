@@ -13,5 +13,12 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="logo_login_width">50dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="floating">26dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_10">10dp</dimen>
+    <dimen name="space_14">14dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_18">18dp</dimen>
 
 </resources>

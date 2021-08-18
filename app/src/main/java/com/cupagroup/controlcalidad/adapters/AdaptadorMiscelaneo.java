@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cupagroup.controlcalidad.R;
 import com.cupagroup.controlcalidad.db.AppDatabase;
+import com.google.android.material.chip.Chip;
 
 import java.util.Map;
 import java.util.Set;
@@ -39,10 +40,8 @@ public class AdaptadorMiscelaneo
         public TextView iControl;
         public TextView iCanteras;
         public TextView iPiezas;
-        public TextView iFallos;
         public ImageView iComment;
         public TextView iCommentText;
-        public Button iEndSession;
 
 
 
@@ -52,10 +51,8 @@ public class AdaptadorMiscelaneo
             iControl = (TextView) v.findViewById(R.id.info_numero_control);
             iCanteras = (TextView) v.findViewById(R.id.info_cantera);
             iPiezas = (TextView) v.findViewById(R.id.info_piezas);
-            iFallos = (TextView) v.findViewById(R.id.info_fallos);
             iComment = (ImageView) v.findViewById(R.id.icono_indicador_derecho);
             iCommentText = (TextView) v.findViewById(R.id.info_comment_text);
-            iEndSession = (Button) v.findViewById(R.id.btn_end_session);
         }
     }
 

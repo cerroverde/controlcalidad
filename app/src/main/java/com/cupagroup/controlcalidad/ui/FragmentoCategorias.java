@@ -3,15 +3,14 @@ package com.cupagroup.controlcalidad.ui;
 import android.graphics.Color;
 import android.os.Bundle;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.annotation.DrawableRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +22,7 @@ import com.cupagroup.controlcalidad.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -33,9 +33,11 @@ public class FragmentoCategorias extends Fragment {
     private AppBarLayout appBarLayout;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private RelativeLayout footer;
+
+
 
     public FragmentoCategorias() {
+
     }
 
     @Override
@@ -57,9 +59,9 @@ public class FragmentoCategorias extends Fragment {
 
     private void insertarTabs(ViewGroup container) {
         View padre = (View) container.getParent();
-        appBarLayout = (AppBarLayout) padre.findViewById(R.id.appbar);
+        appBarLayout = padre.findViewById(R.id.appbar);
 
-        tabLayout = new TabLayout(getActivity());
+        tabLayout = new TabLayout(requireActivity());
         tabLayout.setTabTextColors
                 (Color.parseColor("#212529"),
                         Color.parseColor("#212529"));
@@ -71,8 +73,6 @@ public class FragmentoCategorias extends Fragment {
     private void poblarViewPager(ViewPager viewPager) {
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
         adapter.addFragment(FragmentoCategoria.nuevaInstancia(0), getString(R.string.titulo_tab_material));
-        adapter.addFragment(FragmentoCategoria.nuevaInstancia(1), getString(R.string.titulo_tab_forma));
-        adapter.addFragment(FragmentoCategoria.nuevaInstancia(2), getString(R.string.titulo_tab_piedras));
         adapter.addFragment(new FragmentoMiscelaneo(), getString(R.string.titulo_tab_comentario));
 
 

@@ -12,24 +12,24 @@
 
     <string name="titulo_sesiones">Selección de calidad</string>
 
-    <string name="titulo_tab_material">Características material</string>
+    <string name="titulo_tab_material">Ensayo</string>
     <string name="titulo_tab_forma">Defecto forma</string>
     <string name="titulo_tab_piedras">Defecto piedra</string>
-    <string name="titulo_tab_comentario">Comentarios</string>
+    <string name="titulo_tab_comentario">Información</string>
 
     <string name="titulo_tab_perfil">Perfil</string>
     <string name="titulo_tab_direcciones">Canteras y naves</string>
-    <string name="titulo_tab_tarjetas">Notas</string>
+    <string name="titulo_tab_tarjetas">Desarrollo</string>
 
-    <string name="texto_no_tarjetas">Control según UNE 66020-1. Tabla 1 y 2A. Tamaño lote 35.000 a 150.000. \n
-        Nivel de inspección S3 AQL 4%.\n\n En cuadro UNE-EN 12326 poner OK si el ensayo sobre 32
-        piezas es conforme. Indicar el valor en caso de no conforme.\n *Esp. Individual:
-        Marcado NF +- 25%. Esp. Nominal Marcado CE +-35% Esp. Nominal.\n *Rectangularidad:
-        La desviación de la rectangularidad no debe ser mayor del 1% de la longitud.\n Marcado
-        CE Pizarras 500mm la desviación no mayor de +-5mm y pizarras mayores de 300mm la
-        desviación no mayor del 1% de la longitud.\n *Tamaño: Marcado NF desviación no superior
-        a +-3mm. Marcado CE desviación no superior a +-5mm de medidas establecidas por fabricante.
-    </string>
+    <string name="account_titulo_nave">Designación de Nave</string>
+    <string name="account_descripcion_nave">Seleccione la nave</string>
+
+    <string name="about_titulo">ControlCalidad</string>
+    <string name="about_developed">Departamento de Sistemas - CupaGroup </string>
+    <string name="about_programer">Desarrollado por Alejandro López Rosales</string>
+    <string name="about_programer_mail">malopez@cupagroup.com</string>
+    <string name="about_programer_phone">+32 629 262 891</string>
+    <string name="about_version">Versión</string>
 
     <string name="etiqueta_carrito">Carrito</string>
 
@@ -37,7 +37,7 @@
     <string name="etiqueta_contrasena">Contraseña</string>
     <string name="etiqueta_info_usuario">Información del usuario</string>
     <string name="etiqueta_info_general">Información general</string>
-    <string name="texto_comentario">Reseña tu comentario</string>
+    <string name="texto_comentario">Comentario sobre el ensayo</string>
 
     <string name="hint_campos">0</string>
     <string name="title_activity_settings">Configuración</string>
@@ -88,4 +88,13 @@
     <!-- Custom Radio Buttom User Preference -->
     <string name="label_nave_pref">Naves asociadas</string>
     <string name="loading">Guardando...</string>
+    <string name="flotante">Boton Flotante</string>
+    <string name="account_direccion_nave">Ninguna nave seleccionada</string>
+    <string name="count_text">99</string>
+    <string name="ref_comercial">Valiñas 2</string>
+    <string name="text_descripcion">Descripción del ensayo evaluado</string>
+    <string name="email_text">malopez@cupagroup.com</string>
+    <string name="nombre_text">Alejandro López</string>
+    <string name="etiqueta_info_comment">Comentario</string>
+    <string name="etiqueta_info_history">Lista de ensayos realizados</string>
 </resources>

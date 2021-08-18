@@ -1,22 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imagen_no_tarjeta"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/notes" />
-
-    <TextView
-        android:id="@+id/texto_no_tarjeta"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/develop_lottie"
         android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="top|center"
+        android:scaleType="centerCrop"
+        android:layout_weight="4"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/development"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/texto_no_tarjetas"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_margin="@dimen/space_10"
+        android:layout_weight="1"
+        android:padding="@dimen/space_16">
+
+        <TextView
+            android:id="@+id/about_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/about_titulo"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/about_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="@dimen/space_10"
+
+            android:text="@string/about_version"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            app:layout_constraintBaseline_toBaselineOf="@id/about_titulo"
+
+            app:layout_constraintStart_toEndOf="@id/about_titulo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/about_desarrollo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/about_developed"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_titulo" />
+
+        <TextView
+            android:id="@+id/about_programer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/about_programer"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_desarrollo" />
+
+        <!-- Mail section -->
+        <ImageView
+            android:id="@+id/about_icon_mail"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+
+            android:layout_marginStart="@dimen/space_12"
+            android:src="@drawable/ic_contact_mail"
+
+            app:layout_constraintBottom_toBottomOf="@+id/info_numero_control"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/info_numero_control"
+            app:tint="@color/primaryColor" />
+
+        <TextView
+            android:id="@+id/info_numero_control"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_10"
+
+            android:text="@string/about_programer_mail"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+
+            app:layout_constraintStart_toEndOf="@+id/about_icon_mail"
+            app:layout_constraintTop_toBottomOf="@+id/about_programer" />
+
+        <!-- Phone section -->
+        <ImageView
+            android:id="@+id/about_icon_phone"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+
+            android:layout_marginStart="@dimen/space_12"
+            android:src="@drawable/ic_phone"
+
+            app:layout_constraintBottom_toBottomOf="@+id/about_phone"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/about_phone"
+            app:tint="@color/primaryColor" />
+
+        <TextView
+            android:id="@+id/about_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_12"
+
+            android:text="@string/about_programer_phone"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            app:layout_constraintStart_toEndOf="@+id/about_icon_phone"
+            app:layout_constraintTop_toBottomOf="@+id/info_numero_control" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

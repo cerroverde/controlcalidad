@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:textAlignment="gravity">
+    android:textAlignment="gravity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
         android:id="@+id/container_campos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="146dp"
+        android:minWidth="300dp"
         android:layout_margin="5dp"
-        android:padding="10dp"
+        android:padding="0dp"
         android:background="#E3E3E4"
         android:gravity="center"
-        android:orientation="vertical"
-        android:theme="@style/CuadrosEnsayo">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/titulo_campo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_10"
             android:text="Titulo"
-            android:textAppearance="@style/titulo_caja_ensayos"
-            android:textStyle="normal|bold" />
+            android:theme="@style/titulo_caja_ensayos"/>
 
         <EditText
             android:id="@+id/edit_campo"
-            style="@style/numero_caja_ensayos"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:hint="@string/hint_campos"
-            android:inputType="number" />
+            android:inputType="number"
+            android:theme="@style/numero_caja_ensayos"
+            android:visibility="visible"/>
 
         <Spinner
             android:id="@+id/spinner_campo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:theme="@style/numero_caja_ensayos"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:gravity="fill_horizontal"
+            android:minHeight="50dp"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/sugerencia_campo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="Ayuda descriptiva"
-            android:textAppearance="@style/hint_caja_ensayos"
             android:textSize="12sp" />
 
     </LinearLayout>

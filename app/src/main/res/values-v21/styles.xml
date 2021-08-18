@@ -1,47 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <style name="Theme.RicoPaRico" parent="Base.AppTheme">
-    </style>
-
-    <style name="Theme.ConNavigationDrawer" parent="Base.AppTheme">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.RicoPaRico" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorAccent">@color/primaryDarkColor</item>
-        <item name="android:windowBackground">@color/window_background</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/primaryColor</item>
+        <item name="colorSecondaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
     </style>
 
-    <style name="theme_cabecera_drawer" parent="@style/ThemeOverlay.AppCompat.Dark">
-        <item name="android:background">@color/background_cabecera_drawer</item>
+    <style name="Theme.RicoPaRico.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.RicoPaRico.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.RicoPaRico.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- Splash Theme -->
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent="Theme.RicoPaRico">
         <item name="android:windowBackground">@drawable/cupa_pizarras_splash</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="theme_titulos" parent="Theme.RicoPaRico">
-        <item name="android:background">@color/backgroundAlternative</item>
-        <item name="fontFamily">@font/source_sans_pro</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:textColor">@color/textTitulosColor</item>
-    </style>
-
-    <style name="AppBarCupaTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="fontFamily">@font/open_sans_bold</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="CuadrosEnsayo" parent="android:TextAppearance">
+    <style name="CuadrosEnsayo" parent="Theme.RicoPaRico">
         <item name="android:textColor">@color/textTitulosColor</item>
         <item name="android:textColorHint">?android:textColorHint</item>
         <item name="android:textColorHighlight">?android:textColorHighlight</item>
@@ -49,57 +40,74 @@
         <item name="android:textSize">@dimen/abc_text_size_body_1_material</item>
     </style>
 
-    <style name="titulo_caja_ensayos">
+    <style name="titulo_caja_ensayos" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/open_sans_bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primaryDarkColor</item>
     </style>
 
-    <style name="numero_caja_ensayos">
-        <item name="fontFamily">@font/source_sans_pro_black</item>
-        <item name="android:textSize">35sp</item>
+    <style name="numero_caja_ensayos" parent="Theme.RicoPaRico">
+        <item name="fontFamily">@font/source_sans_pro</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColorHint">@color/textTitulosColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textAlignment">inherit</item>
     </style>
 
-    <style name="spinner_caja_ensayos">
-        <item name="fontFamily">@font/source_sans_pro_black</item>
-        <item name="android:textSize">25sp</item>
+    <style name="spinner_caja_ensayos" parent="Theme.RicoPaRico">
+        <item name="fontFamily">@font/source_sans_pro</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColorHint">@color/textTitulosColor</item>
         <item name="android:textColor">@color/textTitulosColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textAlignment">textStart</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
-    <style name="hint_caja_ensayos">
+    <style name="hint_caja_ensayos" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/source_sans_pro_light</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="MyAlertDialogStyle" parent="Theme.RicoPaRico">
         <!-- Used for the buttons -->
         <item name="colorAccent">#FFC107</item>
+
         <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">@color/primaryDarkColor</item>
+
         <!-- Used for the background -->
         <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/primaryDarkColor</item>
         <item name="android:textSize">@null</item>
+
+        <!-- Size -->
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:windowIsFloating">true</item>
+
+        <!-- Other stuff -->
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="dashboard_caja_titulos">
+    <style name="dashboard_caja_titulos" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">34sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
-    <style name="dashboard_caja_hint">
+    <style name="dashboard_caja_hint" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/source_sans_pro</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <style name="loading">
+    <style name="loading" parent="Theme.RicoPaRico">
         <item name="fontFamily">@font/source_sans_pro</item>
         <item name="android:textSize">26sp</item>
         <item name="android:textColor">@color/primaryDarkColor</item>
     </style>
+
+    <style name="responsable" parent="Theme.RicoPaRico">
+        <item name="fontFamily">@font/source_sans_pro</item>
+        <item name="android:textSize">12sp</item>
+        <item name="iconSize">9dp</item>
+    </style>
+
 </resources>

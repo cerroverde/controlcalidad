@@ -23,18 +23,22 @@
         card_view:cardUseCompatPadding="true">
 
         <GridLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
+            android:columnCount="3"
             android:padding="@dimen/espacio_norma_1"
-            android:rowCount="2">
+            android:rowCount="4">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+
+                android:layout_row="0"
+                android:layout_column="0"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center"
+                android:layout_gravity="left|bottom"
                 android:layout_marginRight="@dimen/espacio_norma_2"
                 android:src="@drawable/ic_assignment" />
 
@@ -42,17 +46,39 @@
                 android:id="@+id/info_numero_control"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_row="0"
+                android:layout_column="1"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center_vertical"
-                android:text="Nº de Control: 7"
+                android:layout_gravity="left|bottom"
+                android:text="Nº de Control:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/numero_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_row="0"
+                android:layout_column="2"
+
+                android:layout_gravity="left|bottom"
+                android:layout_marginBottom="@dimen/espacio_norma_1"
+                android:layout_marginStart="5dp"
+                android:text="8"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+
+                android:layout_row="1"
+                android:layout_column="0"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center"
+                android:layout_gravity="left|bottom"
                 android:layout_marginRight="8dp"
                 android:src="@drawable/ic_business" />
 
@@ -60,17 +86,39 @@
                 android:id="@+id/info_cantera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_row="1"
+                android:layout_column="1"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center_vertical"
-                android:text="Cantera: Cupa 10 Arcas 3"
+                android:layout_gravity="left|bottom"
+                android:text="Nave:"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/cantera_nave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_row="1"
+                android:layout_column="2"
+
+                android:layout_marginBottom="@dimen/espacio_norma_1"
+                android:layout_marginStart="-50dp"
+                android:layout_gravity="left|bottom"
+                android:text="Nombre de nave"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+
+                android:layout_row="2"
+                android:layout_column="0"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center"
+                android:layout_gravity="left|bottom"
                 android:layout_marginRight="8dp"
                 android:src="@drawable/ic_ballot" />
 
@@ -78,31 +126,60 @@
                 android:id="@+id/info_piezas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center_vertical"
-                android:text="Nº de piezas: 26"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <ImageView
-                android:id="@+id/info_fallos_icon"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_row="2"
+                android:layout_column="1"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_alert_error" />
+                android:layout_gravity="left|bottom"
+                android:text="Nº de piezas:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/info_fallos"
+                android:id="@+id/piezas_numero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_row="2"
+                android:layout_column="2"
+
                 android:layout_marginBottom="@dimen/espacio_norma_1"
-                android:layout_gravity="center_vertical"
-                android:text="Total en fallos: 6"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:layout_gravity="left|bottom"
+                android:text="99"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sendEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_row="3"
+
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_marginTop="@dimen/space_18"
+
+                android:text="Enviar correo a responsable"
+                android:textColor="@color/text_check_states"
+                app:rippleColor="@color/primaryColor"
+
+                card_view:chipBackgroundColor="@color/chip_bg_states"
+                card_view:chipCornerRadius="4dp"
+                card_view:chipIcon="@drawable/ic_send_email"
+                card_view:chipIconTint="@color/text_check_states"
+                card_view:chipIconVisible="true"
+                style="@style/Widget.MaterialComponents.Chip.Choice"/>
 
         </GridLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:paddingBottom="8dp"
+        android:text="@string/etiqueta_info_comment"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -111,12 +188,14 @@
         card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
+            android:id="@+id/icono_indicador_derecho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/espacio_norma_1">
 
             <ImageView
+
                 android:id="@+id/icono_password"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
@@ -137,7 +216,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <ImageView
-                android:id="@+id/icono_indicador_derecho"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -148,42 +227,29 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:paddingBottom="8dp"
+        android:text="@string/etiqueta_info_history"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardUseCompatPadding="true">
+
+        <ListView
+            android:id="@+id/lv_active_ensayos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
         android:id="@+id/info_comment_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_end_ensayo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/espacio_norma_1"
-            android:background="@color/white"
-            android:layout_margin="@dimen/espacio_norma_1"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="@string/finalizar_ensayo"
-            android:textColor="@color/primaryDarkColor" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_end_session"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/espacio_norma_1"
-            android:background="@color/white"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="@string/finalizar_control"
-            android:textColor="@color/primaryDarkColor" />
-
-
-
-    </RelativeLayout>
 </LinearLayout>

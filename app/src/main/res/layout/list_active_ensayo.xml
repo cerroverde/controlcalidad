@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/bottom_line_dark">
+
+        <TextView
+            android:id="@+id/ensayo_ref_comercial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:paddingStart="@dimen/space_12"
+            android:paddingTop="@dimen/fab_margin"
+            android:paddingEnd="@dimen/space_12"
+            android:layout_alignParentTop="true"
+            android:text="@string/ref_comercial"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/primaryColor" />
+
+        <ImageView
+            android:id="@+id/delete_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/red" />
+
+        <TextView
+            android:id="@+id/txt_dimensiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ensayo_ref_comercial"
+            android:layout_toStartOf="@+id/txt_created_at"
+            android:layout_toEndOf="@+id/ensayo_ref_comercial"
+            android:paddingStart="@dimen/space_12"
+            android:paddingTop="@dimen/fab_margin"
+            android:text="Media Luna R - 25 x 18"
+            android:textAlignment="textEnd"
+            android:textColor="@color/customList"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_descripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_dimensiones"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:paddingStart="@dimen/space_12"
+            android:paddingEnd="@dimen/space_12"
+            android:text="@string/text_descripcion"
+            android:textColor="@color/customList"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_created_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/delete_item"
+            android:layout_toStartOf="@+id/delete_item"
+            android:layout_centerVertical="true"
+            android:text="2020-07-23 15:45 PM"
+            android:textAlignment="textEnd"
+            android:textColor="@color/customList"
+            android:textSize="14sp" />
+
+
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

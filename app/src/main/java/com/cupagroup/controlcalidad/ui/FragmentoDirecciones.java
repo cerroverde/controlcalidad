@@ -71,7 +71,7 @@ public class FragmentoDirecciones extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView = (RecyclerView) requireView().findViewById(R.id.lvCanteras);
         mLayoutManager = new LinearLayoutManager(getActivity());
-        canteraPosition = mPreferences.getInt("cantera_position",1);
+        canteraPosition = mPreferences.getInt("cantera_position",0);
         naveName = mPreferences.getString("nave", "Sin declarar");
         naveAddress = mPreferences.getString("nave_address", "Sin declarar");
 

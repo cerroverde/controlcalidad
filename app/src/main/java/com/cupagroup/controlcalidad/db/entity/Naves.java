@@ -2,6 +2,7 @@ package com.cupagroup.controlcalidad.db.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.cupagroup.controlcalidad.utils.Constants;
@@ -14,7 +15,7 @@ public class Naves implements Serializable {
     private long id;
 
     @ColumnInfo(name = "id_cantera")
-    private Long id_cantera;
+    private String id_cantera;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -26,7 +27,7 @@ public class Naves implements Serializable {
     private String phone;
 
 
-    public Naves(long id, long id_cantera, String name, String address, String phone) {
+    public Naves(long id, String id_cantera, String name, String address, String phone) {
         this.id = id;
         this.id_cantera = id_cantera;
         this.name = name;
@@ -34,6 +35,7 @@ public class Naves implements Serializable {
         this.phone = phone;
     }
 
+    @Ignore
     public Naves(){
         //Empty
     }
@@ -41,11 +43,11 @@ public class Naves implements Serializable {
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
-    public Long getId_cantera() {
+    public String getId_cantera() {
         return id_cantera;
     }
 
-    public void setId_cantera(Long id_cantera) {
+    public void setId_cantera(String id_cantera) {
         this.id_cantera = id_cantera;
     }
 

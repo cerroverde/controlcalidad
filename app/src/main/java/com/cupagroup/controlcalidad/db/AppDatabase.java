@@ -13,16 +13,20 @@ import com.cupagroup.controlcalidad.db.dao.CalidadDao;
 import com.cupagroup.controlcalidad.db.dao.CanterasDao;
 import com.cupagroup.controlcalidad.db.dao.EspesorDao;
 import com.cupagroup.controlcalidad.db.dao.FormasDao;
+import com.cupagroup.controlcalidad.db.dao.FormatosDao;
 import com.cupagroup.controlcalidad.db.dao.NavesDao;
 import com.cupagroup.controlcalidad.db.dao.QualityControlDao;
+import com.cupagroup.controlcalidad.db.dao.ResponsableDao;
 import com.cupagroup.controlcalidad.db.dao.SessionDao;
 import com.cupagroup.controlcalidad.db.dao.UserDao;
 import com.cupagroup.controlcalidad.db.entity.Calidad;
 import com.cupagroup.controlcalidad.db.entity.Canteras;
 import com.cupagroup.controlcalidad.db.entity.Espesor;
 import com.cupagroup.controlcalidad.db.entity.Formas;
+import com.cupagroup.controlcalidad.db.entity.Formatos;
 import com.cupagroup.controlcalidad.db.entity.Naves;
 import com.cupagroup.controlcalidad.db.entity.QualityControl;
+import com.cupagroup.controlcalidad.db.entity.Responsables;
 import com.cupagroup.controlcalidad.db.entity.Session;
 import com.cupagroup.controlcalidad.db.entity.User;
 import com.cupagroup.controlcalidad.utils.Constants;
@@ -35,13 +39,15 @@ import com.cupagroup.controlcalidad.utils.Constants;
         Session.class,
         User.class,
         Formas.class,
-        Canteras.class
-}, version = 7, exportSchema = false)
+        Canteras.class,
+        Formatos.class,
+        Responsables.class
+}, version = 13, exportSchema = false)
 
 public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase appDB;
-    static final Migration MIGRATION_6_7 = new Migration(6,7) {
+    static final Migration MIGRATION_11_12 = new Migration(11,12) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 
@@ -59,7 +65,7 @@ public abstract class AppDatabase extends RoomDatabase {
         return Room.databaseBuilder(context, AppDatabase.class, Constants.DB_NAME)
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
-                .addMigrations(MIGRATION_6_7)
+                .addMigrations(MIGRATION_11_12)
                 .build();
     }
 
@@ -71,4 +77,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getPreferenceUser();
     public abstract FormasDao getFormas();
     public abstract CanterasDao getCanteras();
+    public abstract FormatosDao getFormatos();
+    public abstract ResponsableDao getResponsable();
 }

@@ -15,5 +15,11 @@ public class Constants {
     public static final String TABLE_NAME_ESPESOR = "espesor";
     public static final String TABLE_NAME_CALIDAD = "calidad";
     public static final String TABLE_NAME_CANTERAS = "canteras";
+    public static final String TABLE_NAME_FORMATOS = "formatos";
+    public static final String TABLE_NAME_RESPONSABLES = "responsable";
 
+    // Variables para el envio de correos
+    public static final String SENDER_EMAIL= "envios@cupagroup.com";
+    public static final String SENDER_PASSWORD="ferro08$";
+    public static final String MAILHOST = "smtp.office365.com";
 }

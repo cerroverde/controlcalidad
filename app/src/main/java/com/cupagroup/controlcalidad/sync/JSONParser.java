@@ -3,6 +3,7 @@ package com.cupagroup.controlcalidad.sync;
 import android.util.Log;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -38,7 +40,8 @@ public class JSONParser {
             if (method.equals("POST")){
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(url);
-                httpPost.setEntity(new UrlEncodedFormEntity(params));
+
+                httpPost.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
 
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
@@ -59,17 +62,13 @@ public class JSONParser {
                 is = httpEntity.getContent();
 
             }
-        }catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }catch (ClientProtocolException e){
-            e.printStackTrace();
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
 
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    is, "iso-8859-1"),8);
+                    is, StandardCharsets.ISO_8859_1),8);
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null){
